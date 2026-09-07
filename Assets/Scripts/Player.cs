@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -13,7 +14,10 @@ public class Player : MonoBehaviour
     public float groundRadius = 0.1f;
     public LayerMask groundLayer;
 
-    private Animator animator;  
+    private Animator animator;
+
+    private int coins;
+    public TMP_Text textCoins;
 
     void Start()
     {
@@ -49,6 +53,8 @@ public class Player : MonoBehaviour
         if (collision.transform.CompareTag("Coin"))
         {
             Destroy(collision.gameObject);
+            coins++;
+            textCoins.text = coins.ToString();
         }
     }
 }
